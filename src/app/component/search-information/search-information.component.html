@@ -1,0 +1,28 @@
+<br>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    
+    <div *ngFor="let menu of list" class="card" style="width: 23rem;">
+      <div class="card-body">
+        <h3 class="card-title">{{menu.name}}</h3>
+        <p class="card-text">{{menu.description}}</p>
+        <br>
+        <img src="{{menu.image}}" class="card-img-top" width="100" height="200">
+        <br>
+        <br>
+        <h4 class="card-text" style="text-align: center;">{{menu.price}}</h4>
+        <br>
+        <p class="card-text" style="font-size: 15px;">{{menu.types}}</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<br>
+
+<div class="add" style="padding-left: 92%;">
+  <button type="button" class="btn btn-danger">สั่งอาหาร</button>
+</div>
+<br>
