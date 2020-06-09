@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { GetMenuList } from '../../service/menulist';
+import { GetMenuList } from '../../service/service.menulist';
 import { MenuList, Menu } from 'src/app/models/model_menu';
 
 @Component({
@@ -23,8 +23,7 @@ export class ResearchInformationComponent {
           this.Onlist.emit(res.menu);
         }
       );
-    }
-    else {
+    } else {
       this._menuservice.GetMenuListByKeyword(dataForm.keyword).subscribe(
         res => {
           this.Onlist.emit(res.menu);

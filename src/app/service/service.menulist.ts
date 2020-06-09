@@ -16,6 +16,5 @@ export class GetMenuList {
     GetMenuListByKeyword(keyword: String): Observable<MenuList> {
         return this.http.get<MenuList>('http://localhost:8080/api/resteurant/menu/getlistmenu/keyword/' + keyword);
     }
-
 }
 

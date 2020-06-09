@@ -1,0 +1,50 @@
+<h1 style="text-align: center;"> Create Order</h1>
+
+<div class="insertorder" style="float: left;;">
+  
+  <button class="btn btn-danger my-2 my-sm-0" type="submit" (click)="onClickBack()">Back</button>
+
+</div>
+
+<div class="insertorder" style="float: right;">
+  <form #billForm="ngForm" class="form-inline">
+    <input ngModel name="bill" class="form-control mr-sm-2" type="text" placeholder="No.Bill" aria-label="Bill">
+    <button class="btn btn-success my-2 my-sm-0" type="submit" (click)="InsertOrder(billForm.value)">สั่งอาหาร</button>
+  </form>
+</div>
+
+<div class="row" style="margin-top: 6%;">
+
+  <div class="col-sm-5">
+    <div class="card">
+      <h4 class="card-title" style="text-align: center; margin-top: 5%;">Menu List</h4>
+      <hr>
+      <div class="card-body" *ngFor="let menu of list">
+     
+        <p class="card-text">
+          {{menu.name}}
+          <!-- <a style="float: right;" href="order"><h3>+</h3></a> -->
+          <button (click)="onClickAddQuantity(menu.name)" type="button" class="btn btn-outline-light btn-md" style="color: black; font-size: 20px; float: right;">+</button>
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title" style="text-align: center;">Order List</h4>
+        <div class="card-body" *ngFor="let order of map | keyvalue">
+     
+          <p class="card-text">
+            {{order.key}}<span style="float: right;">{{order.value}} &nbsp; <button type="button" class="btn btn-outline-danger btn-sm" (click)="onClickReduceQuantity(order.key)"> - </button></span>            <!-- <a style="float: right;" href="order"><h3>+</h3></a> -->
+            
+          </p>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

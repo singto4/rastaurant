@@ -1,4 +1,4 @@
-export class Menu{
+export class Menu {
     id: number;
     name: String;
     description: String;
@@ -7,6 +7,6 @@ export class Menu{
     types: String;
 }
 
-export class MenuList{
+export class MenuList {
     menu: Menu[];
 }

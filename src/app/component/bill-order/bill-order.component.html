@@ -1,0 +1,46 @@
+<h1 style="text-align: center;"> Bill Order</h1>
+
+<div class="insertorder" style="float: left;;">
+  
+  <button class="btn btn-danger my-2 my-sm-0" type="submit" (click)="onClickBack()">Back</button>
+
+</div>
+
+<div class="insertorder" style="float: right;">
+  <form #billForm="ngForm" class="form-inline">
+    <input ngModel name="bill" class="form-control mr-sm-2" type="text" placeholder="No.Bill" aria-label="Bill">
+    <button class="btn btn-success my-2 my-sm-0" type="submit" (click)="GetBillOrder(billForm.value)">Search</button>
+  </form>
+</div>
+
+<br>
+<br>
+<div class="container" style="margin-top: 3%;">
+  <div class="row justify-content-md-center">
+    <div class="card" style="width: 100rem;">
+      <div class="card-body">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Menu</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h5 style="float: right ;">Total Price : 500.00 $</h5>
+
+      </div>
+    </div>
+  </div>
+</div>

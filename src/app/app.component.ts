@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetMenuList } from './service/menulist';
+import { GetMenuList } from './service/service.menulist';
 import { Menu } from './models/model_menu';
 
 @Component({
@@ -16,14 +16,14 @@ export class AppComponent implements OnInit{
 
   // tslint:disable-next-line: use-life-cycle-interface
   ngOnInit() {
-    const resp = this._menuservice.GetMenuList().subscribe(
+    this._menuservice.GetMenuList().subscribe(
       res => {
         this.list = res.menu;
       }
     );
   }
 
-  Onlist(menu){
+  Onlist(menu) {
     this.list = menu;
   }
 }
