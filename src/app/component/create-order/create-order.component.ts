@@ -5,6 +5,9 @@ import { GetMenuList } from '../../service/service.menulist';
 import { ServiceOrder } from '../../service/service.order';
 import { Order } from 'src/app/models/model_order';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { DialogComponent } from '../../component/dialog/dialog.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-order',
@@ -23,7 +26,8 @@ export class CreateOrderComponent implements OnInit {
     private _shareservice: ShareService,
     private _getmenulist: GetMenuList,
     private _orderservice: ServiceOrder,
-    private _router: Router
+    private _router: Router,
+    private _dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -82,20 +86,20 @@ export class CreateOrderComponent implements OnInit {
 
     });
 
-    this.arr.forEach((key) => {
-      console.log(key);
-    });
-
     this._orderservice.addOrder(this.arr).subscribe(res => {
       console.log(res);
     });
 
-    this.map.clear();
-    this.arr = [];
+    this._shareservice.map_order = this.map;
 
-    alert( 'สั่งอาหารเรียบร้อย' );
+    const dialogRef = this._dialog.open(DialogComponent, {
+      width: '300px'
+    });
 
-
+    dialogRef.afterClosed().subscribe(result => {
+      this.map.clear();
+      this.arr = [];
+      console.log('The dialog was closed');
+    });
   }
-
 }

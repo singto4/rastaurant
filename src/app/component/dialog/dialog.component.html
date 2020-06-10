@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>สั่งอาหารเรียบร้อย <i class="fa fa-check-circle-o" style="font-size:24px; color: #33cc33;"></i></h2>
+<mat-dialog-content class="mat-typography">
+  <p>รายการอาหาร</p>
+  <div *ngFor="let order of list_order | keyvalue">
+    <p>
+      {{order.key}}<span style="float: right;">{{order.value}} &nbsp; </span>
+    </p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn btn-success">Ok</button>
+</mat-dialog-actions>

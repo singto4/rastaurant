@@ -15,6 +15,8 @@ export class SearchInformationComponent implements OnInit {
   // @Input('list') list: Menu[];
 
   public list: Menu[];
+  page: Number = 1;
+  totalrecords: Number;
 
   constructor(private _menuservice: GetMenuList, private _router: Router) { }
 
@@ -22,8 +24,7 @@ export class SearchInformationComponent implements OnInit {
     this._menuservice.GetMenuList().subscribe(
       res => {
         this.list = res.menu;
-        // this._shareservice.list = res.menu;
-        // this.flag = true;
+        this.totalrecords = res.menu.length;
       }
     );
   }
@@ -31,11 +32,6 @@ export class SearchInformationComponent implements OnInit {
   Onlist(menu) {
     this.list = menu;
   }
-  // constructor(private _router: Router) {}
-
-  // ngOnInit() {
-
-  // }
 
   CreateBill() {
     this._router.navigate(['order']);

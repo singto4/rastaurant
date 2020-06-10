@@ -9,7 +9,7 @@
 <div class="insertorder" style="float: right;">
   <form #billForm="ngForm" class="form-inline">
     <input ngModel name="bill" class="form-control mr-sm-2" type="text" placeholder="No.Bill" aria-label="Bill">
-    <button class="btn btn-success my-2 my-sm-0" type="submit" (click)="InsertOrder(billForm.value)">สั่งอาหาร</button>
+    <button class="btn btn-success my-2 my-sm-0" type="submit" (click)="InsertOrder(billForm.value); billForm.reset();" >สั่งอาหาร</button>
   </form>
 </div>
 

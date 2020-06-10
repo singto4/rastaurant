@@ -3,3 +3,7 @@ export class Order {
     menu: String;
     quantity: String;
 }
+
+export class OrderList {
+    order: Order[];
+}

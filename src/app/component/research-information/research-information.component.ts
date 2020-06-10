@@ -10,8 +10,6 @@ import { MenuList, Menu } from 'src/app/models/model_menu';
 })
 export class ResearchInformationComponent {
   @Output() Onlist: EventEmitter<any> = new EventEmitter();
-  // tslint:disable-next-line: no-input-rename
-  @Input('list') list: Menu[];
 
   constructor(private _menuservice: GetMenuList) { }
 
@@ -33,3 +31,5 @@ export class ResearchInformationComponent {
   }
 
 }
+
+

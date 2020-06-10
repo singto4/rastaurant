@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Bill, BillList } from '../../models/model_bill';
+import { ServiceOrder } from '../../service/service.order';
 
 @Component({
   selector: 'app-bill-order',
@@ -8,9 +10,12 @@ import { Router } from '@angular/router';
 })
 export class BillOrderComponent implements OnInit {
 
-  public count: Number = 3;
+  public Listbill: Bill[];
+  public total;
+  public page: Number = 1;
+  public totalrecords: Number;
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private _serviceorder: ServiceOrder) { }
 
 
 
@@ -21,7 +26,33 @@ export class BillOrderComponent implements OnInit {
     this._router.navigate(['menu']);
   }
 
-  GetBillOrder(bill) {
+  GetBillOrder(data) {
 
+    if (data !== '') {
+
+      this._serviceorder.GetOrderByBill(data.bill).subscribe(
+        res => {
+
+          this.Listbill = res.bill;
+          this.TotalPrice();
+
+        }
+      );
+
+    } else {
+
+      this._router.navigate(['billorder']);
+
+    }
+  }
+
+  TotalPrice() {
+
+    this.total = 0;
+    this.Listbill.forEach( value => {
+
+      this.total = this.total + value.total;
+
+    });
   }
 }

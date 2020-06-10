@@ -12,6 +12,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateOrderComponent } from './component/create-order/create-order.component';
 import { ServiceOrder } from './service/service.order';
 import { BillOrderComponent } from './component/bill-order/bill-order.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatDialogModule } from '@angular/material';
+import { DialogComponent } from './component/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,16 +23,22 @@ import { BillOrderComponent } from './component/bill-order/bill-order.component'
     SearchInformationComponent,
     ResearchInformationComponent,
     CreateOrderComponent,
-    BillOrderComponent
+    BillOrderComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    MatDialogModule
   ],
+  entryComponents:[DialogComponent],
   providers: [GetMenuList, ShareService, ServiceOrder],
   bootstrap: [AppComponent]
+
 
 })
 export class AppModule { }

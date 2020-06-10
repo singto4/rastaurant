@@ -14,16 +14,7 @@ export class AppComponent implements OnInit{
 
   constructor(private _menuservice: GetMenuList) {}
 
-  // tslint:disable-next-line: use-life-cycle-interface
   ngOnInit() {
-    this._menuservice.GetMenuList().subscribe(
-      res => {
-        this.list = res.menu;
-      }
-    );
-  }
 
-  Onlist(menu) {
-    this.list = menu;
   }
 }

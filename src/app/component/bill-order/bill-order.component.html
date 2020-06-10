@@ -22,23 +22,27 @@
         <table class="table">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Menu</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Price</th>
+              <th scope="col" width="5%">#</th>
+              <th scope="col" width="15%">Menu</th>
+              <th scope="col" width="10%">Quantity</th>
+              <th scope="col" width="10%">Price</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">0</th>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
+            <tr *ngFor="let bill of Listbill| paginate: { id: 'listing_pagination', itemsPerPage: 8, currentPage: page, totalItems: totalrecords}; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{bill.menu}}</td>
+              <td>{{bill.quantity}}</td>
+              <td>{{bill.total}}</td>
             </tr>
           </tbody>
         </table>
 
-        <h5 style="float: right ;">Total Price : 500.00 $</h5>
+        <div style="text-align: center;">
+          <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+        </div>
+        
+        <h5 style="float: right ;">Total Price : {{total}} $</h5>
 
       </div>
     </div>
