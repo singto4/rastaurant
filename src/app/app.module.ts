@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatDialogModule } from '@angular/material';
 import { DialogComponent } from './component/dialog/dialog.component';
+import { DialogNullComponent } from './component/dialog-null/dialog-null.component';
+import { DialogMenuNullComponent } from './component/dialog-menu-null/dialog-menu-null.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { DialogComponent } from './component/dialog/dialog.component';
     ResearchInformationComponent,
     CreateOrderComponent,
     BillOrderComponent,
-    DialogComponent
+    DialogComponent,
+    DialogNullComponent,
+    DialogMenuNullComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,7 @@ import { DialogComponent } from './component/dialog/dialog.component';
     NgxPaginationModule,
     MatDialogModule
   ],
-  entryComponents:[DialogComponent],
+  entryComponents:[DialogComponent, DialogNullComponent, DialogMenuNullComponent],
   providers: [GetMenuList, ShareService, ServiceOrder],
   bootstrap: [AppComponent]
 

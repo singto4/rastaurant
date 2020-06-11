@@ -28,20 +28,22 @@ export class BillOrderComponent implements OnInit {
 
   GetBillOrder(data) {
 
-    if (data !== '') {
+    if (data.bill !== '') {
 
       this._serviceorder.GetOrderByBill(data.bill).subscribe(
         res => {
 
           this.Listbill = res.bill;
+          this.totalrecords = res.bill.length;
           this.TotalPrice();
 
         }
       );
 
     } else {
-
-      this._router.navigate(['billorder']);
+      this.Listbill = [];
+      this.total = '';
+       // this._router.navigate(['billorder']);
 
     }
   }

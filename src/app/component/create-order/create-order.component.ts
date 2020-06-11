@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ShareService} from '../../service/service.share';
+import { ShareService } from '../../service/service.share';
 import { Menu } from 'src/app/models/model_menu';
 import { GetMenuList } from '../../service/service.menulist';
 import { ServiceOrder } from '../../service/service.order';
@@ -7,7 +7,9 @@ import { Order } from 'src/app/models/model_order';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../../component/dialog/dialog.component';
-import { NgForm } from '@angular/forms';
+import { DialogNullComponent } from '../../component/dialog-null/dialog-null.component';
+import { DialogMenuNullComponent } from '../../component/dialog-menu-null/dialog-menu-null.component';
+
 
 @Component({
   selector: 'app-create-order',
@@ -22,13 +24,13 @@ export class CreateOrderComponent implements OnInit {
   arr: Array<Object> = [];
 
   constructor
-  (
-    private _shareservice: ShareService,
-    private _getmenulist: GetMenuList,
-    private _orderservice: ServiceOrder,
-    private _router: Router,
-    private _dialog: MatDialog
-  ) {}
+    (
+      private _shareservice: ShareService,
+      private _getmenulist: GetMenuList,
+      private _orderservice: ServiceOrder,
+      private _router: Router,
+      private _dialog: MatDialog
+    ) { }
 
   ngOnInit() {
 
@@ -75,31 +77,57 @@ export class CreateOrderComponent implements OnInit {
 
   InsertOrder(data) {
 
-    this.map.forEach((key, value) => {
+    if ((data.bill !== '' && data.bill !== null) && this.map.size !== 0) {
 
-      const order = new Order();
-      order.bill = data.bill;
-      order.menu = value;
-      order.quantity = key;
+      this.map.forEach((key, value) => {
 
-      this.arr.push(order);
+        const order = new Order();
+        order.bill = data.bill;
+        order.menu = value;
+        order.quantity = key;
 
-    });
+        this.arr.push(order);
 
-    this._orderservice.addOrder(this.arr).subscribe(res => {
-      console.log(res);
-    });
+      });
 
-    this._shareservice.map_order = this.map;
+      this._orderservice.addOrder(this.arr).subscribe(res => {
+        console.log(res);
+      });
 
-    const dialogRef = this._dialog.open(DialogComponent, {
-      width: '300px'
-    });
+      this._shareservice.map_order = this.map;
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.map.clear();
-      this.arr = [];
-      console.log('The dialog was closed');
-    });
+      const dialogRef = this._dialog.open(DialogComponent, {
+        width: '300px'
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        this.map.clear();
+        this.arr = [];
+        console.log('The dialog was closed');
+      });
+
+    } else if (this.map.size === 0 && (data.bill !== '' || data.bill !== null)) {
+
+      const dialogRef = this._dialog.open(DialogMenuNullComponent, {
+        width: '300px'
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        this.map.clear();
+        this.arr = [];
+        console.log('The dialog was closed');
+      });
+
+    } else if ((data.bill === '' || data.bill === null)) {
+
+      const dialogRef = this._dialog.open(DialogNullComponent, {
+        width: '300px'
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+
+    }
   }
 }
