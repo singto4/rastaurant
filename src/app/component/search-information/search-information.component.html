@@ -1,13 +1,19 @@
 <h1 style="text-align: center;"> Menu List</h1>
 
-<app-research-information (Onlist)="Onlist($event)"></app-research-information>
+<br>
+
+<div class="add">
+  <button type="button" class="btn btn-dark" (click)="CreateBill()" style="margin-right: 15px; float: left;">สั่งอาหาร</button>
+  <button type="button" class="btn btn-dark" (click)="BillOrder()" style="float: left;" >Bill Order</button>
+  <app-research-information (Onlist)="Onlist($event)"></app-research-information>
+</div>
 
 <br>
 
 <div class="container" style="margin-top: 3%;">
   <div class="row justify-content-md-center">
     
-    <div *ngFor="let menu of list | paginate: { id: 'listing_pagination', itemsPerPage: 6, currentPage: page, totalItems: totalrecords}" class="card" style="width: 23rem;">
+    <div *ngFor="let menu of list | paginate: { id: 'listing_pagination', itemsPerPage: 6, currentPage: page}" class="card" id="card-1" >
       <div class="card-body">
         <h3 class="card-title" style="height: 30px;">{{menu.name}}</h3>
         <p class="card-text" style="height: 50px;">{{menu.description}}</p>
@@ -32,14 +38,6 @@
    
 </div>
 
-
-
-<br>
-
-<div class="add" style="float: right;">
-  <button type="button" class="btn btn-success" (click)="CreateBill()" style="margin-right: 15px;">สั่งอาหาร</button>
-  <button type="button" class="btn btn-success" (click)="BillOrder()" >Bill Order</button>
-</div>
 <br>
 <br>
 <br>

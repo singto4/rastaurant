@@ -29,7 +29,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let bill of Listbill| paginate: { id: 'listing_pagination', itemsPerPage: 8, currentPage: page, totalItems: totalrecords}; let i = index">
+            <tr *ngFor="let bill of Listbill| paginate: { id: 'listing_pagination1', itemsPerPage: 8, currentPage: page}; let i = index">
               <th scope="row">{{i+1}}</th>
               <td>{{bill.menu}}</td>
               <td>{{bill.quantity}}</td>
@@ -39,7 +39,7 @@
         </table>
 
         <div style="text-align: center;">
-          <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+          <pagination-controls id="listing_pagination1" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
         </div>
         
         <h5 style="float: right ;">Total Price : {{total}} $</h5>

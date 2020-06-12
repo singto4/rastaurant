@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { SearchInformationComponent } from './component/search-information/search-information.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GetMenuList } from './service/service.menulist';
-import { ShareService} from './service/service.share';
+import { ShareService } from './service/service.share';
 import { ResearchInformationComponent } from './component/research-information/research-information.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateOrderComponent } from './component/create-order/create-order.component';
@@ -39,9 +39,12 @@ import { DialogMenuNullComponent } from './component/dialog-menu-null/dialog-men
     NgxPaginationModule,
     MatDialogModule
   ],
-  entryComponents:[DialogComponent, DialogNullComponent, DialogMenuNullComponent],
+  entryComponents: [DialogComponent, DialogNullComponent, DialogMenuNullComponent],
   providers: [GetMenuList, ShareService, ServiceOrder],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
 
 
 })

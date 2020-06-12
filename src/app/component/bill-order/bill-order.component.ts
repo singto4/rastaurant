@@ -13,11 +13,8 @@ export class BillOrderComponent implements OnInit {
   public Listbill: Bill[];
   public total;
   public page: Number = 1;
-  public totalrecords: Number;
 
   constructor(private _router: Router, private _serviceorder: ServiceOrder) { }
-
-
 
   ngOnInit() {
   }
@@ -34,7 +31,7 @@ export class BillOrderComponent implements OnInit {
         res => {
 
           this.Listbill = res.bill;
-          this.totalrecords = res.bill.length;
+          this.page = 1;
           this.TotalPrice();
 
         }
@@ -43,7 +40,6 @@ export class BillOrderComponent implements OnInit {
     } else {
       this.Listbill = [];
       this.total = '';
-       // this._router.navigate(['billorder']);
 
     }
   }

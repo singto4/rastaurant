@@ -12,11 +12,9 @@ import { GetMenuList } from '../../service/service.menulist';
 export class SearchInformationComponent implements OnInit {
 
   // tslint:disable-next-line: no-input-rename
-  // @Input('list') list: Menu[];
 
   public list: Menu[];
   page: Number = 1;
-  totalrecords: Number;
 
   constructor(private _menuservice: GetMenuList, private _router: Router) { }
 
@@ -24,13 +22,13 @@ export class SearchInformationComponent implements OnInit {
     this._menuservice.GetMenuList().subscribe(
       res => {
         this.list = res.menu;
-        this.totalrecords = res.menu.length;
       }
     );
   }
 
   Onlist(menu) {
     this.list = menu;
+    this.page = 1;
   }
 
   CreateBill() {

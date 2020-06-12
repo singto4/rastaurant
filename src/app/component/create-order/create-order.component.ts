@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../../component/dialog/dialog.component';
 import { DialogNullComponent } from '../../component/dialog-null/dialog-null.component';
 import { DialogMenuNullComponent } from '../../component/dialog-menu-null/dialog-menu-null.component';
+import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
 
 
 @Component({
@@ -22,6 +24,11 @@ export class CreateOrderComponent implements OnInit {
   map = new Map<String, any>();
 
   arr: Array<Object> = [];
+  page: Number = 1;
+
+  private _success = new Subject<string>();
+  staticAlertClosed = false;
+  successMessage = '';
 
   constructor
     (
@@ -29,10 +36,14 @@ export class CreateOrderComponent implements OnInit {
       private _getmenulist: GetMenuList,
       private _orderservice: ServiceOrder,
       private _router: Router,
-      private _dialog: MatDialog
+      private _dialog: MatDialog,
     ) { }
 
   ngOnInit() {
+
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+    this._success.subscribe(message => this.successMessage = message);
+    this._success.pipe(debounceTime(5000)).subscribe(() => this.successMessage = '');
 
     this._getmenulist.GetMenuList().subscribe(
       res => {
@@ -79,32 +90,40 @@ export class CreateOrderComponent implements OnInit {
 
     if ((data.bill !== '' && data.bill !== null) && this.map.size !== 0) {
 
-      this.map.forEach((key, value) => {
+      if (data.bill > 0) {
 
-        const order = new Order();
-        order.bill = data.bill;
-        order.menu = value;
-        order.quantity = key;
+        this.map.forEach((key, value) => {
 
-        this.arr.push(order);
+          const order = new Order();
+          order.bill = data.bill;
+          order.menu = value;
+          order.quantity = key;
 
-      });
+          this.arr.push(order);
 
-      this._orderservice.addOrder(this.arr).subscribe(res => {
-        console.log(res);
-      });
+        });
 
-      this._shareservice.map_order = this.map;
+        this._orderservice.addOrder(this.arr).subscribe(res => {
+          console.log(res);
+        });
 
-      const dialogRef = this._dialog.open(DialogComponent, {
-        width: '300px'
-      });
+        this._shareservice.map_order = this.map;
 
-      dialogRef.afterClosed().subscribe(result => {
-        this.map.clear();
-        this.arr = [];
-        console.log('The dialog was closed');
-      });
+        const dialogRef = this._dialog.open(DialogComponent, {
+          width: '300px'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          this.map.clear();
+          this.arr = [];
+          console.log('The dialog was closed');
+        });
+
+      } else {
+
+        this._success.next('กรุณาใส่เลข Bill ให้ถูกต้อง');
+
+      }
 
     } else if (this.map.size === 0 && (data.bill !== '' || data.bill !== null)) {
 
