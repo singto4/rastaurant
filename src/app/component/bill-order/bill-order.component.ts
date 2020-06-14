@@ -53,4 +53,8 @@ export class BillOrderComponent implements OnInit {
 
     });
   }
+
+  onClickToBillStatus() {
+    this._router.navigate(['billstatus']);
+  }
 }

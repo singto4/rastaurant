@@ -18,6 +18,9 @@ import { MatDialogModule } from '@angular/material';
 import { DialogComponent } from './component/dialog/dialog.component';
 import { DialogNullComponent } from './component/dialog-null/dialog-null.component';
 import { DialogMenuNullComponent } from './component/dialog-menu-null/dialog-menu-null.component';
+import { BillStatusComponent } from './component/bill-status/bill-status.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { HeaderComponent } from './component/header/header.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { DialogMenuNullComponent } from './component/dialog-menu-null/dialog-men
     BillOrderComponent,
     DialogComponent,
     DialogNullComponent,
-    DialogMenuNullComponent
+    DialogMenuNullComponent,
+    BillStatusComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

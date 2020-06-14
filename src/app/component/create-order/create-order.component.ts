@@ -52,9 +52,11 @@ export class CreateOrderComponent implements OnInit {
     );
   }
 
+
   onClickBack() {
     this._router.navigate(['menu']);
   }
+
 
   onClickAddQuantity(menu) {
 
@@ -71,6 +73,7 @@ export class CreateOrderComponent implements OnInit {
     }
   }
 
+
   onClickReduceQuantity(menu) {
     let value = this.map.get(menu);
 
@@ -85,6 +88,7 @@ export class CreateOrderComponent implements OnInit {
 
     }
   }
+
 
   InsertOrder(data) {
 
@@ -149,4 +153,6 @@ export class CreateOrderComponent implements OnInit {
 
     }
   }
+
+
 }

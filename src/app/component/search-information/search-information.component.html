@@ -11,8 +11,7 @@
 <br>
 
 <div class="container" style="margin-top: 3%;">
-  <div class="row justify-content-md-center">
-    
+  <div class="row">
     <div *ngFor="let menu of list | paginate: { id: 'listing_pagination', itemsPerPage: 6, currentPage: page}" class="card" id="card-1" >
       <div class="card-body">
         <h3 class="card-title" style="height: 30px;">{{menu.name}}</h3>
