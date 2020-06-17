@@ -11,7 +11,6 @@ const routes: Routes = [
     { path: '', redirectTo: '/menu', pathMatch: 'full' },
     { path: 'billorder', component: BillOrderComponent },
     { path: 'billstatus', component: BillStatusComponent }
-
 ];
 
 @NgModule({

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MenuList, Menu } from 'src/app/models/model_menu';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetMenuList } from '../../service/service.menulist';
+import { ShareService } from '../../service/service.share';
 
 @Component({
   selector: 'app-search-information',
@@ -12,11 +13,16 @@ import { GetMenuList } from '../../service/service.menulist';
 export class SearchInformationComponent implements OnInit {
 
   // tslint:disable-next-line: no-input-rename
-
+  public button: boolean;
   public list: Menu[];
   page: Number = 1;
 
-  constructor(private _menuservice: GetMenuList, private _router: Router) { }
+  constructor(
+    private _menuservice: GetMenuList,
+    private _router: Router,
+    private _shareservice: ShareService,
+  ) { }
+
 
   ngOnInit() {
     this._menuservice.GetMenuList().subscribe(
@@ -24,6 +30,8 @@ export class SearchInformationComponent implements OnInit {
         this.list = res.menu;
       }
     );
+
+    this.button = this._shareservice.button;
   }
 
   Onlist(menu) {

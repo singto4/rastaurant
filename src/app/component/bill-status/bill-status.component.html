@@ -21,13 +21,14 @@
             </tr>
           </thead>
           <tbody style="height: 10%;">
-            <tr *ngFor="let bill of listbill| paginate: { id: 'listing_pagination2', itemsPerPage: 8, currentPage: page}; let i = index">
+            <tr *ngFor="let bill of listbill | paginate: { id: 'listing_pagination2', itemsPerPage: 8, currentPage: page}; let i = index">
               <th scope="row">{{i+1}}</th>
               <td>{{bill.bill}}</td>
               <td>{{bill.status}}</td>
               <td *ngIf = "bill.status === 'doing'"> 
                 <a href="/billstatus" (click)="onClickUpdateStatus(bill.id)"> Check Bill </a>
               </td>
+              <td *ngIf = "bill.status === 'done'"></td>
             </tr>
           </tbody> 
         </table>
@@ -35,9 +36,7 @@
         <div style="text-align: center;">
           <pagination-controls id="listing_pagination2" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
         </div> 
-        
       
-
       </div>
     </div>
   </div>

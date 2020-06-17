@@ -21,6 +21,7 @@ import { DialogMenuNullComponent } from './component/dialog-menu-null/dialog-men
 import { BillStatusComponent } from './component/bill-status/bill-status.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HeaderComponent } from './component/header/header.component';
     DialogMenuNullComponent,
     BillStatusComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { HeaderComponent } from './component/header/header.component';
     NgxPaginationModule,
     MatDialogModule
   ],
-  entryComponents: [DialogComponent, DialogNullComponent, DialogMenuNullComponent],
+  entryComponents: [DialogComponent, DialogNullComponent, DialogMenuNullComponent, LoginComponent],
   providers: [GetMenuList, ShareService, ServiceOrder],
   bootstrap: [AppComponent],
   schemas: [

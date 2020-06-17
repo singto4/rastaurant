@@ -1,5 +1,8 @@
 <nav class="navbar sticky-top navbar-dark" style="background-color: black;">
   <a class="navbar-brand" href="#">Restaurant</a>
+  <div *ngIf = "button_login === true">
+    <button type="submit" class="btn btn-group-justified btn-lg" style="border: 0; color: white;" (click)="Login()"> Sign in </button>
+  </div>
 </nav>
 
 <br>
