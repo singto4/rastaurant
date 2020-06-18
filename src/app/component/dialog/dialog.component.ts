@@ -14,8 +14,6 @@ export class DialogComponent implements OnInit {
 
   ngOnInit() {
     this.list_order = this._shareservice.map_order;
-    console.log(this._shareservice.map_order);
-
   }
 
 }

@@ -3,6 +3,9 @@
   <div *ngIf = "button_login === true">
     <button type="submit" class="btn btn-group-justified btn-lg" style="border: 0; color: white;" (click)="Login()"> Sign in </button>
   </div>
+  <div *ngIf = "button_login === false">
+    <button type="submit" class="btn btn-group-justified btn-lg" style="border: 0; color: white;"> Log out </button>
+  </div>
 </nav>
 
 <br>

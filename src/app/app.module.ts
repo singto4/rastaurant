@@ -22,6 +22,7 @@ import { BillStatusComponent } from './component/bill-status/bill-status.compone
 import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
 import { LoginComponent } from './component/login/login.component';
+import { ServiceLogin } from './service/service.login';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { LoginComponent } from './component/login/login.component';
     MatDialogModule
   ],
   entryComponents: [DialogComponent, DialogNullComponent, DialogMenuNullComponent, LoginComponent],
-  providers: [GetMenuList, ShareService, ServiceOrder],
+  providers: [GetMenuList, ShareService, ServiceOrder, ServiceLogin],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

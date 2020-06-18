@@ -10,7 +10,7 @@ export class ServiceOrder {
     constructor(private http: HttpClient) {
     }
 
-    addOrder(data: Array<Object>) {
+    addOrder(data: Array<Object>){
 
         const httpOptions = {
             headers: new HttpHeaders({'Content-Type': 'application/json'})

@@ -26,7 +26,8 @@ export class HeaderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
         this.button_login = this._shareservice.button_login;
-     });
+
+    });
 
   }
 }
