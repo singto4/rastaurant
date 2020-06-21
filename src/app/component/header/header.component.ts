@@ -12,22 +12,34 @@ import { ShareService } from '../../service/service.share';
 export class HeaderComponent implements OnInit {
 
   public button_login: boolean;
+  public tokenValue: string;
 
   constructor(private _dialog: MatDialog, private _router: Router, private _shareservice: ShareService) { }
 
   ngOnInit() {
-     this.button_login = this._shareservice.button_login;
+    this._shareservice.setToken(localStorage.getItem('token'));
+    this.tokenValue = this._shareservice.getToken();
   }
 
   Login() {
 
     const dialogRef = this._dialog.open(LoginComponent);
-    this._shareservice.dialog_service = dialogRef;
+
+    this._shareservice.dialog_service_login = dialogRef;
 
     dialogRef.afterClosed().subscribe(result => {
-        this.button_login = this._shareservice.button_login;
-
+      this._shareservice.observableToken().subscribe(
+        (data: string) => {
+          this.tokenValue = data;
+        }
+      );
     });
+  }
 
+  Logout() {
+    this._shareservice.setToken(null);
+    localStorage.removeItem('token');
+    this.tokenValue = this._shareservice.getToken();
+    this._router.navigate(['menu']);
   }
 }

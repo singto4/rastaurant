@@ -2,9 +2,11 @@
 
 <br>
 
-<div class="add" *ngIf = "button === false">
-  <button type="button" class="btn btn-dark" (click)="CreateBill()" style="margin-right: 15px; float: left;">สั่งอาหาร</button>
-  <button type="button" class="btn btn-dark" (click)="BillOrder()" style="float: left;" >Bill Order</button>
+<!-- <div class="add"> -->
+<div class="add" *ngIf = "tokenValue !== undefined && tokenValue !== '' && tokenValue !== null">
+  <button type="button" class="btn btn-dark" (click)="createBill()" style="margin-right: 15px; float: left;">สั่งอาหาร</button>
+  <button type="button" class="btn btn-dark" (click)="billOrder()" style="margin-right: 15px; float: left;" >Bill Order</button>
+  <button type="button" class="btn btn-dark" (click)="manageMenu()"style="float: left;" >Manage Menu</button>
 </div>
 
 <app-research-information (Onlist)="Onlist($event)"></app-research-information>
@@ -12,6 +14,7 @@
 <br>
 
 <div class="container" style="margin-top: 3%;">
+  
   <div class="row">
     <div *ngFor="let menu of list | paginate: { id: 'listing_pagination', itemsPerPage: 6, currentPage: page}" class="card" id="card-1" >
       <div class="card-body">

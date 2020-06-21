@@ -23,6 +23,9 @@ import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
 import { LoginComponent } from './component/login/login.component';
 import { ServiceLogin } from './service/service.login';
+import { ManageMenuComponent } from './component/manage-menu/manage-menu.component';
+import { DialogUpdateMenuComponent } from './component/dialog-update-menu/dialog-update-menu.component';
+import { DialogAddMenuComponent } from './component/dialog-add-menu/dialog-add-menu.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { ServiceLogin } from './service/service.login';
     BillStatusComponent,
     FooterComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    ManageMenuComponent,
+    DialogUpdateMenuComponent,
+    DialogAddMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,14 @@ import { ServiceLogin } from './service/service.login';
     NgxPaginationModule,
     MatDialogModule
   ],
-  entryComponents: [DialogComponent, DialogNullComponent, DialogMenuNullComponent, LoginComponent],
+  entryComponents: [
+    DialogComponent,
+    DialogNullComponent,
+    DialogMenuNullComponent,
+    LoginComponent,
+    DialogUpdateMenuComponent,
+    DialogAddMenuComponent
+  ],
   providers: [GetMenuList, ShareService, ServiceOrder, ServiceLogin],
   bootstrap: [AppComponent],
   schemas: [

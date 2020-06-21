@@ -13,7 +13,7 @@ import { ShareService } from '../../service/service.share';
 export class SearchInformationComponent implements OnInit {
 
   // tslint:disable-next-line: no-input-rename
-  public button: boolean;
+  public tokenValue: string;
   public list: Menu[];
   page: Number = 1;
 
@@ -31,7 +31,14 @@ export class SearchInformationComponent implements OnInit {
       }
     );
 
-    this.button = this._shareservice.button;
+    this._shareservice.setToken(localStorage.getItem('token'));
+
+    this._shareservice.observableToken().subscribe(
+      (data: string) => {
+        this.tokenValue = data;
+      }
+    );
+    // this.tokenValue = this._shareservice.getToken();
   }
 
   Onlist(menu) {
@@ -39,12 +46,16 @@ export class SearchInformationComponent implements OnInit {
     this.page = 1;
   }
 
-  CreateBill() {
+  createBill() {
     this._router.navigate(['order']);
   }
 
-  BillOrder() {
+  billOrder() {
     this._router.navigate(['billorder']);
+  }
+
+  manageMenu() {
+    this._router.navigate(['managemenu']);
   }
 }
 

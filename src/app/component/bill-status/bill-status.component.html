@@ -17,6 +17,7 @@
               <th scope="col" width="5%">#</th>
               <th scope="col" width="10%">Bill</th>
               <th scope="col" width="10%">Status</th>
+              <th scope="col" width="15%">CreateTime</th>
               <th scope="col" width="10%">Edit</th>
             </tr>
           </thead>
@@ -25,6 +26,7 @@
               <th scope="row">{{i+1}}</th>
               <td>{{bill.bill}}</td>
               <td>{{bill.status}}</td>
+              <td>{{bill.time}}</td>
               <td *ngIf = "bill.status === 'doing'"> 
                 <a href="/billstatus" (click)="onClickUpdateStatus(bill.id)"> Check Bill </a>
               </td>

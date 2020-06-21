@@ -18,7 +18,7 @@ export class BillStatusComponent implements OnInit {
   ngOnInit() {
     this._serviceorder.GetBillStatus().subscribe(
       res => {
-        this.listbill = res.billstatus;
+        this.listbill = res.body.billstatus;
         this.page = 1;
       }
     );

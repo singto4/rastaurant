@@ -1,11 +1,13 @@
-<nav class="navbar sticky-top navbar-dark" style="background-color: black;">
+<nav class="navbar sticky-top navbar-dark" style="background-color: black; width: 100%;">
   <a class="navbar-brand" href="#">Restaurant</a>
-  <div *ngIf = "button_login === true">
+  <div *ngIf = "tokenValue === undefined || tokenValue === '' || tokenValue === null">
     <button type="submit" class="btn btn-group-justified btn-lg" style="border: 0; color: white;" (click)="Login()"> Sign in </button>
   </div>
-  <div *ngIf = "button_login === false">
-    <button type="submit" class="btn btn-group-justified btn-lg" style="border: 0; color: white;"> Log out </button>
+  <div *ngIf = "tokenValue !== undefined && tokenValue !== '' && tokenValue !== null && tokenValue !== 'null'">
+    <button type="submit" class="btn btn-group-justified btn-lg" style="border: 0; color: white;" (click)="Logout()"> Log out </button>
   </div>
 </nav>
 
 <br>
+
+

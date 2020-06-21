@@ -9,8 +9,8 @@ import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../../component/dialog/dialog.component';
 import { DialogNullComponent } from '../../component/dialog-null/dialog-null.component';
 import { DialogMenuNullComponent } from '../../component/dialog-menu-null/dialog-menu-null.component';
-import {Subject} from 'rxjs';
-import {debounceTime} from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 
 @Component({

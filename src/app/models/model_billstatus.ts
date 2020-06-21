@@ -1,7 +1,8 @@
 export class BillStatus {
     id: number;
-    bill: String;
+    bill: string;
     status: string;
+    time: string;
 }
 
 export class BillStatusList {

@@ -25,12 +25,12 @@ export class BillOrderComponent implements OnInit {
 
   GetBillOrder(data) {
 
-    if (data.bill !== '') {
+    if (data.billnunmber !== '') {
 
-      this._serviceorder.GetOrderByBill(data.bill).subscribe(
+      this._serviceorder.GetOrderByBill(data.billnunmber).subscribe(
         res => {
 
-          this.Listbill = res.bill;
+          this.Listbill = res.body.bill;
           this.page = 1;
           this.TotalPrice();
 
