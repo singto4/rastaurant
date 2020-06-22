@@ -25,16 +25,8 @@ export class DialogUpdateMenuComponent implements OnInit {
 
     this._menuservice.updateMenuById(data).subscribe(
       res => {
-        if (res.header.status === 'Success') {
-
           alert(res.header.status);
           this._shareservice.dialog_service_updateMenu.close(res.header.status);
-
-        } else {
-
-          alert(res.header.status);
-
-        }
       }
     );
   }

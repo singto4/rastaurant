@@ -20,16 +20,8 @@ export class DialogAddMenuComponent implements OnInit {
   addMenu(data) {
     this._menuservice.addMenu(data).subscribe(
       res => {
-        if (res.header.status === 'Success') {
-
-          alert(res.header.status);
+          alert(res.header.status + '\n' + res.header.errormessage);
           this._shareservice.dialog_service_addMenu.close(res.header.status);
-
-        } else {
-
-          alert(res.header.status);
-
-        }
       }
     );
   }

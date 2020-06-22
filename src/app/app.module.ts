@@ -26,6 +26,7 @@ import { ServiceLogin } from './service/service.login';
 import { ManageMenuComponent } from './component/manage-menu/manage-menu.component';
 import { DialogUpdateMenuComponent } from './component/dialog-update-menu/dialog-update-menu.component';
 import { DialogAddMenuComponent } from './component/dialog-add-menu/dialog-add-menu.component';
+import { DialogSessionTimeoutComponent } from './component/dialog-session-timeout/dialog-session-timeout.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DialogAddMenuComponent } from './component/dialog-add-menu/dialog-add-m
     LoginComponent,
     ManageMenuComponent,
     DialogUpdateMenuComponent,
-    DialogAddMenuComponent
+    DialogAddMenuComponent,
+    DialogSessionTimeoutComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,7 @@ import { DialogAddMenuComponent } from './component/dialog-add-menu/dialog-add-m
     FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   entryComponents: [
     DialogComponent,
@@ -60,7 +62,8 @@ import { DialogAddMenuComponent } from './component/dialog-add-menu/dialog-add-m
     DialogMenuNullComponent,
     LoginComponent,
     DialogUpdateMenuComponent,
-    DialogAddMenuComponent
+    DialogAddMenuComponent,
+    DialogSessionTimeoutComponent
   ],
   providers: [GetMenuList, ShareService, ServiceOrder, ServiceLogin],
   bootstrap: [AppComponent],

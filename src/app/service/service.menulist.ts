@@ -1,7 +1,7 @@
 import { MenuList, Menu } from '../models/model_menu';
 import { Response } from '../models/model_response';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -19,15 +19,30 @@ export class GetMenuList {
     }
 
     deleteMenuById(id: number) {
-        return this.http.delete<Response>('http://localhost:8080/api/resteurant/menu/deletemenu/' + id);
+
+        const httpOptions = {
+            headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
+        };
+
+        return this.http.delete<Response>('http://localhost:8080/api/resteurant/menu/deletemenu/' + id, httpOptions);
     }
 
     updateMenuById(menu: Menu) {
-        return this.http.put<Response>('http://localhost:8080/api/resteurant/menu/updatemenu', menu);
+
+        const httpOptions = {
+            headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
+        };
+
+        return this.http.put<Response>('http://localhost:8080/api/resteurant/menu/updatemenu', menu, httpOptions);
     }
 
     addMenu(menu: Menu) {
-        return this.http.post<Response>('http://localhost:8080/api/resteurant/menu/createmenu', menu);
+
+        const httpOptions = {
+            headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
+        };
+
+        return this.http.post<Response>('http://localhost:8080/api/resteurant/menu/createmenu', menu, httpOptions);
     }
 }
 

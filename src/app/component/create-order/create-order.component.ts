@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../../component/dialog/dialog.component';
 import { DialogNullComponent } from '../../component/dialog-null/dialog-null.component';
 import { DialogMenuNullComponent } from '../../component/dialog-menu-null/dialog-menu-null.component';
+import { DialogSessionTimeoutComponent } from '../../component/dialog-session-timeout/dialog-session-timeout.component';
+import { LoginComponent } from '../login/login.component';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -31,25 +33,42 @@ export class CreateOrderComponent implements OnInit {
   successMessage = '';
 
   constructor
-    (
-      private _shareservice: ShareService,
-      private _getmenulist: GetMenuList,
-      private _orderservice: ServiceOrder,
-      private _router: Router,
-      private _dialog: MatDialog,
-    ) { }
+  (
+    private _shareservice: ShareService,
+    private _getmenulist: GetMenuList,
+    private _orderservice: ServiceOrder,
+    private _router: Router,
+    private _dialog: MatDialog,
+  ) { }
 
   ngOnInit() {
 
-    setTimeout(() => this.staticAlertClosed = true, 20000);
-    this._success.subscribe(message => this.successMessage = message);
-    this._success.pipe(debounceTime(5000)).subscribe(() => this.successMessage = '');
+    if (localStorage.getItem('token') === null || localStorage.getItem('token') === '' || localStorage.getItem('token') === undefined) {
 
-    this._getmenulist.GetMenuList().subscribe(
-      res => {
-        this.list = res.menu;
-      }
-    );
+      const dialogSession_Timeout = this._dialog.open(DialogSessionTimeoutComponent);
+      dialogSession_Timeout.afterClosed().subscribe(result => {
+
+        const dialogRef = this._dialog.open(LoginComponent);
+
+        this._shareservice.dialog_service_login = dialogRef;
+
+        dialogRef.afterClosed().subscribe(() => {
+          location.reload();
+        });
+      });
+
+    } else {
+
+      setTimeout(() => this.staticAlertClosed = true, 20000);
+      this._success.subscribe(message => this.successMessage = message);
+      this._success.pipe(debounceTime(5000)).subscribe(() => this.successMessage = '');
+
+      this._getmenulist.GetMenuList().subscribe(
+        res => {
+          this.list = res.menu;
+        }
+      );
+    }
   }
 
 
@@ -108,19 +127,46 @@ export class CreateOrderComponent implements OnInit {
         });
 
         this._orderservice.addOrder(this.arr).subscribe(res => {
-          console.log(res);
-        });
+          // alert(res.header.status + '\n' + res.header.errorcode + ' : ' + res.header.errormessage );
+          if (res.header.status === 'Unsuccess') {
 
-        this._shareservice.map_order = this.map;
+            const dialogSession_Timeout = this._dialog.open(DialogSessionTimeoutComponent);
 
-        const dialogRef = this._dialog.open(DialogComponent, {
-          width: '300px'
-        });
+            dialogSession_Timeout.afterClosed().subscribe(result => {
+              this.map.clear();
+              this.arr = [];
 
-        dialogRef.afterClosed().subscribe(result => {
-          this.map.clear();
-          this.arr = [];
-          console.log('The dialog was closed');
+              this._shareservice.setToken(null);
+              localStorage.removeItem('token');
+
+              const dialogRef = this._dialog.open(LoginComponent);
+
+              this._shareservice.dialog_service_login = dialogRef;
+
+              dialogRef.afterClosed().subscribe(res => {
+
+                if (res === 'Success') {
+                  location.reload();
+                }
+
+
+              });
+            });
+
+          } else {
+
+            this._shareservice.map_order = this.map;
+
+            const dialogRef = this._dialog.open(DialogComponent, {
+              width: '300px'
+            });
+
+            dialogRef.afterClosed().subscribe(result => {
+              this.map.clear();
+              this.arr = [];
+              console.log('The dialog was closed');
+            });
+          }
         });
 
       } else {

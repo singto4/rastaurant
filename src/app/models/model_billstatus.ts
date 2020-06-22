@@ -3,6 +3,7 @@ export class BillStatus {
     bill: string;
     status: string;
     time: string;
+    update_time: string;
 }
 
 export class BillStatusList {

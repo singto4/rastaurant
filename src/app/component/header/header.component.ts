@@ -19,6 +19,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this._shareservice.setToken(localStorage.getItem('token'));
     this.tokenValue = this._shareservice.getToken();
+    this._shareservice.observableToken().subscribe(
+      (data: string) => {
+        this.tokenValue = data;
+      }
+    );
   }
 
   Login() {
@@ -28,11 +33,11 @@ export class HeaderComponent implements OnInit {
     this._shareservice.dialog_service_login = dialogRef;
 
     dialogRef.afterClosed().subscribe(result => {
-      this._shareservice.observableToken().subscribe(
-        (data: string) => {
-          this.tokenValue = data;
-        }
-      );
+      // this._shareservice.observableToken().subscribe(
+      //   (data: string) => {
+      //     this.tokenValue = data;
+      //   }
+      // );
     });
   }
 

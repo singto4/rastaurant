@@ -24,9 +24,6 @@ export class LoginComponent implements OnInit {
       this._servicelogin.login(data).subscribe(
         res => {
 
-          console.log(res.body.status);
-          console.log(res.body.token);
-
           if (res.header.status === 'Success' && res.body.token !== '') {
 
             localStorage.setItem('token', res.body.token);
@@ -40,7 +37,7 @@ export class LoginComponent implements OnInit {
               }
             );
 
-            this._shareservice.dialog_service_login.close();
+            this._shareservice.dialog_service_login.close(res.header.status);
 
           } else {
 
@@ -52,7 +49,7 @@ export class LoginComponent implements OnInit {
       );
 
     } else {
-      console.log('kak');
+      alert('กรุณากรอก Username และ Password');
     }
 
 

@@ -15,9 +15,10 @@
           <thead class="thead-dark">
             <tr>
               <th scope="col" width="5%">#</th>
-              <th scope="col" width="10%">Bill</th>
-              <th scope="col" width="10%">Status</th>
-              <th scope="col" width="15%">CreateTime</th>
+              <th scope="col" width="5%">Bill</th>
+              <th scope="col" width="5%">Status</th>
+              <th scope="col" width="20%">CreateTime</th>
+              <th scope="col" width="20%">UpdateTime</th>
               <th scope="col" width="10%">Edit</th>
             </tr>
           </thead>
@@ -27,6 +28,7 @@
               <td>{{bill.bill}}</td>
               <td>{{bill.status}}</td>
               <td>{{bill.time}}</td>
+              <td>{{bill.update_time}}</td>
               <td *ngIf = "bill.status === 'doing'"> 
                 <a href="/billstatus" (click)="onClickUpdateStatus(bill.id)"> Check Bill </a>
               </td>
