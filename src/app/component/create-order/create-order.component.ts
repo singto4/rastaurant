@@ -127,7 +127,6 @@ export class CreateOrderComponent implements OnInit {
         });
 
         this._orderservice.addOrder(this.arr).subscribe(res => {
-          // alert(res.header.status + '\n' + res.header.errorcode + ' : ' + res.header.errormessage );
           if (res.header.status === 'Unsuccess') {
 
             const dialogSession_Timeout = this._dialog.open(DialogSessionTimeoutComponent);
@@ -143,13 +142,14 @@ export class CreateOrderComponent implements OnInit {
 
               this._shareservice.dialog_service_login = dialogRef;
 
+              // tslint:disable-next-line: no-shadowed-variable
               dialogRef.afterClosed().subscribe(res => {
 
                 if (res === 'Success') {
                   location.reload();
+                } else {
+                  // this._router.navigate(['menu']);
                 }
-
-
               });
             });
 

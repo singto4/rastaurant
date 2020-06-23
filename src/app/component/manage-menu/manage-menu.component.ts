@@ -30,6 +30,8 @@ export class ManageMenuComponent implements OnInit {
 
     if (localStorage.getItem('token') === null || localStorage.getItem('token') === '' || localStorage.getItem('token') === undefined) {
 
+      console.log(localStorage.getItem('token'));
+
       const dialogSession_Timeout = this._dialog.open(DialogSessionTimeoutComponent);
       dialogSession_Timeout.afterClosed().subscribe(result => {
 
@@ -39,6 +41,7 @@ export class ManageMenuComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(() => {
           location.reload();
+          console.log(localStorage.getItem('token'));
         });
       });
 
@@ -97,7 +100,7 @@ export class ManageMenuComponent implements OnInit {
     this._shareservice.menu = menu;
 
     const dialogRef = this._dialog.open(DialogUpdateMenuComponent, {
-      width: '40%', height: '80%'
+      width: '550px', height: '620px'
     });
 
     this._shareservice.dialog_service_updateMenu = dialogRef;
@@ -105,7 +108,10 @@ export class ManageMenuComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result === 'Success') {
+
         location.reload();
+
+      } else if (result === undefined) {
 
       } else {
 
@@ -140,16 +146,18 @@ export class ManageMenuComponent implements OnInit {
 
   addMenu() {
     const dialogRef = this._dialog.open(DialogAddMenuComponent, {
-      width: '40%', height: '80%'
+       width: '550px', height: '620px'
     });
 
     this._shareservice.dialog_service_addMenu = dialogRef;
 
     dialogRef.afterClosed().subscribe(result => {
-
+      console.log(result);
       if (result === 'Success') {
 
         location.reload();
+
+      } else if (result === undefined) {
 
       } else {
 

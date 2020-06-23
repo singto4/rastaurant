@@ -3,13 +3,20 @@
 <br>
 
 <!-- <div class="add"> -->
-<div class="add" *ngIf = "tokenValue !== undefined && tokenValue !== '' && tokenValue !== null">
-  <button type="button" class="btn btn-dark" (click)="createBill()" style="margin-right: 15px; float: left;">สั่งอาหาร</button>
-  <button type="button" class="btn btn-dark" (click)="billOrder()" style="margin-right: 15px; float: left;" >Bill Order</button>
-  <button type="button" class="btn btn-dark" (click)="manageMenu()"style="float: left;" >Manage Menu</button>
+<div class="row">
+  <div class="col">
+    <div class="add" *ngIf = "tokenValue !== undefined && tokenValue !== '' && tokenValue !== null">
+      <button type="button" class="btn btn-dark" (click)="createBill()" style="margin-right: 15px; float: left;">สั่งอาหาร</button>
+      <button type="button" class="btn btn-dark" (click)="billOrder()" style="margin-right: 15px; float: left;" >Bill Order</button>
+      <button type="button" class="btn btn-dark" (click)="manageMenu()"style="float: left;" >Manage Menu</button>
+    </div>
+  
+    <app-research-information (Onlist)="Onlist($event)"></app-research-information>
+
+  </div>
 </div>
 
-<app-research-information (Onlist)="Onlist($event)"></app-research-information>
+
 
 <br>
 
