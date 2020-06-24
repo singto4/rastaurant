@@ -37,7 +37,7 @@ export class BillOrderComponent implements OnInit {
         this._shareservice.dialog_service_login = dialogRef;
 
         dialogRef.afterClosed().subscribe(() => {
-          location.reload();
+          this._router.navigate(['menu']);
         });
       });
     }

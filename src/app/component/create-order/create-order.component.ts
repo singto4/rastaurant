@@ -53,7 +53,7 @@ export class CreateOrderComponent implements OnInit {
         this._shareservice.dialog_service_login = dialogRef;
 
         dialogRef.afterClosed().subscribe(() => {
-          location.reload();
+          this._router.navigate(['menu']);
         });
       });
 
@@ -196,9 +196,6 @@ export class CreateOrderComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
       });
-
     }
   }
-
-
 }

@@ -30,8 +30,6 @@ export class ManageMenuComponent implements OnInit {
 
     if (localStorage.getItem('token') === null || localStorage.getItem('token') === '' || localStorage.getItem('token') === undefined) {
 
-      console.log(localStorage.getItem('token'));
-
       const dialogSession_Timeout = this._dialog.open(DialogSessionTimeoutComponent);
       dialogSession_Timeout.afterClosed().subscribe(result => {
 
@@ -40,8 +38,7 @@ export class ManageMenuComponent implements OnInit {
         this._shareservice.dialog_service_login = dialogRef;
 
         dialogRef.afterClosed().subscribe(() => {
-          location.reload();
-          console.log(localStorage.getItem('token'));
+          this._router.navigate(['menu']);
         });
       });
 
@@ -126,6 +123,7 @@ export class ManageMenuComponent implements OnInit {
           // tslint:disable-next-line: no-shadowed-variable
           dialogRef.afterClosed().subscribe(res => {
 
+            alert(res);
             if (res === '') {
 
               this._shareservice.setToken(null);
@@ -157,7 +155,7 @@ export class ManageMenuComponent implements OnInit {
 
         location.reload();
 
-      } else if (result === undefined) {
+      } else if (result === undefined || !result) {
 
       } else {
 
@@ -190,4 +188,5 @@ export class ManageMenuComponent implements OnInit {
     });
   }
 }
+
 

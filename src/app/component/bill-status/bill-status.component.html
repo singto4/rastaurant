@@ -9,19 +9,19 @@
 <br><br>
 
 <div class="container" style="margin-top: 5%;">
-  <div class="row justify-content-md-center">
-    <div class="card" style="width: 50rem;">
+  <div class="row">
+    <div class="card" style="width: 100%;">
       <div class="card-body">
         <div class="table-responsive">
-          <table class="card-table table table-sm">
+          <table class="card-table table table-sm" style="text-align: center;">
             <thead class="thead-dark" style="font-size: 15px;">
               <tr>
                 <th scope="col" width="5%">#</th>
-                <th scope="col" width="5%">Bill</th>
-                <th scope="col" width="7%">Status</th>
-                <th scope="col" width="20%">CreateTime</th>
-                <th scope="col" width="20%">UpdateTime</th>
-                <th scope="col" width="10%">Edit</th>
+                <th scope="col" width="7%">Bill</th>
+                <th scope="col" width="10%">Status</th>
+                <th scope="col" width="25%">CreateTime</th>
+                <th scope="col" width="25%">UpdateTime</th>
+                <th scope="col" width="15%">Edit</th>
               </tr>
             </thead>
             <tbody style="height: 10%; font-size: 14px;">
@@ -41,7 +41,7 @@
           </table>
         </div>
 
-        <div style="text-align: center;">
+        <div style="text-align: center; font-size: 14px;">
           <pagination-controls id="listing_pagination2" maxSize="5" directionLinks="true" (pageChange)="page = $event">
           </pagination-controls>
         </div>

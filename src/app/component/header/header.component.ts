@@ -19,9 +19,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this._shareservice.setToken(localStorage.getItem('token'));
     this.tokenValue = this._shareservice.getToken();
+
     this._shareservice.observableToken().subscribe(
-      (data: string) => {
-        this.tokenValue = data;
+      (token: string) => {
+        this.tokenValue = token;
       }
     );
   }

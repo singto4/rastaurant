@@ -30,7 +30,4 @@ export class ShareService {
         this.tokenValue = tokenValue;
         this.token.next(tokenValue);
     }
-
-
-
 }
