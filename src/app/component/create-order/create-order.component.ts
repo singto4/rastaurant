@@ -43,7 +43,7 @@ export class CreateOrderComponent implements OnInit {
 
   ngOnInit() {
 
-    if (localStorage.getItem('token') === null || localStorage.getItem('token') === '' || localStorage.getItem('token') === undefined) {
+    if (localStorage.getItem('token') === null || localStorage.getItem('token') === '' || !localStorage.getItem('token')) {
 
       const dialogSession_Timeout = this._dialog.open(DialogSessionTimeoutComponent);
       dialogSession_Timeout.afterClosed().subscribe(result => {

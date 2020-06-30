@@ -28,7 +28,7 @@ export class ManageMenuComponent implements OnInit {
 
   ngOnInit() {
 
-    if (localStorage.getItem('token') === null || localStorage.getItem('token') === '' || localStorage.getItem('token') === undefined) {
+    if (localStorage.getItem('token') === null || localStorage.getItem('token') === '' || !localStorage.getItem('token')) {
 
       const dialogSession_Timeout = this._dialog.open(DialogSessionTimeoutComponent);
       dialogSession_Timeout.afterClosed().subscribe(result => {
@@ -61,9 +61,8 @@ export class ManageMenuComponent implements OnInit {
     this._menuservice.deleteMenuById(id).subscribe(
       res => {
         if (res.header.status === 'Unsuccess') {
-          console.log('1');
+
           const dialogSession_Timeout = this._dialog.open(DialogSessionTimeoutComponent);
-          console.log('2');
           dialogSession_Timeout.afterClosed().subscribe(() => {
             const dialogRef = this._dialog.open(LoginComponent);
 

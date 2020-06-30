@@ -5,6 +5,7 @@ import { SearchInformationComponent } from './component/search-information/searc
 import { BillOrderComponent } from './component/bill-order/bill-order.component';
 import { BillStatusComponent } from './component/bill-status/bill-status.component';
 import { ManageMenuComponent } from './component/manage-menu/manage-menu.component';
+import { ReportingComponent } from './component/reporting/reporting.component';
 
 const routes: Routes = [
     { path: 'order', component: CreateOrderComponent },
@@ -12,7 +13,8 @@ const routes: Routes = [
     { path: '', redirectTo: '/menu', pathMatch: 'full' },
     { path: 'billorder', component: BillOrderComponent },
     { path: 'billstatus', component: BillStatusComponent },
-    { path: 'managemenu', component: ManageMenuComponent}
+    { path: 'managemenu', component: ManageMenuComponent},
+    { path: 'reporting', component: ReportingComponent }
 ];
 
 @NgModule({

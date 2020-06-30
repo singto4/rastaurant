@@ -1,0 +1,90 @@
+<h1 style="text-align: center;">Reporting</h1>
+
+<br>
+
+<div class="row">
+  <div class="col-4">
+    <div class="" style="float: left;">
+      <button class="btn btn-danger my-2 my-sm-0" type="submit" (click)="onClickBack()">Back</button>
+    </div>
+  </div>
+
+  <div class="col-8" style="float: right;">
+    <div class="" style="float: right;">
+      <button class="btn btn-secondary" type="submit" style="margin-right: 15px;" (click)="genPdfFile()" >PDF &nbsp;<i class="fa fa-file-pdf-o"></i></button>
+      <button class="btn btn-success my-2 my-sm-0" type="submit" (click)="genExcelFile()" >EXCEL &nbsp;<i class="fa fa-file-excel-o"></i></button>
+    </div>
+  </div>
+</div>
+
+<div id="table-report">
+  <br>
+<div class="row" style="margin-top: 2%;">
+  <div class="col-md-3" style="border: 5px;">
+    <mat-form-field appearance="fill">
+    <mat-label style="color: white;">Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" (dateChange)="onClick($event)"
+      style="text-align: center; color: white;">
+    <mat-datepicker-toggle matSuffix [for]="picker" style="color: white;"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  </div>
+</div>
+
+
+  <div class="row" style="margin-top: 3%;">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title" style="text-align: center;">Order report</div>
+          <div class="table-responsive">
+            <table class="card-table table table-sm" id="table-report">
+              <thead class="thead-dark" style="font-size: 16px; text-align: center;">
+                <tr>
+                  <th scope="col" width="50%">bill</th>
+                  <th scope="col" width="50%">price</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 15px; text-align: center;" *ngFor="let menu of arr">
+                <tr>
+                  <td>{{menu.bill}}</td>
+                  <td>{{menu.total}}</td>
+                </tr>
+               
+              </tbody>
+            </table>
+
+            <h5 style="float: right; font-size: 16px;" id="table-report">Total Price : {{total}}$</h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 100px; margin-top: 5%;">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title" style="text-align: center;">Menu report</div>
+          <div class="table-responsive">
+            <table class="card-table table table-sm" id="table-report">
+              <thead class="thead-dark" style="font-size: 16px; text-align: center;">
+                <tr>
+                  <th scope="col" width="50%">menu</th>
+                  <th scope="col" width="50%">quantity</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 15px; text-align: center;" *ngFor="let menu of menuReport">
+                <tr>
+                  <td>{{menu.menu}}</td>
+                  <td>{{menu.quantity}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

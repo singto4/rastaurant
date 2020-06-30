@@ -5,6 +5,7 @@ import { BillStatusList } from '../models/model_billstatus';
 import { Observable } from 'rxjs';
 import { Response } from '../models/model_response';
 
+
 @Injectable()
 export class ServiceOrder {
 

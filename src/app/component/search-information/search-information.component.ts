@@ -57,5 +57,9 @@ export class SearchInformationComponent implements OnInit {
   manageMenu() {
     this._router.navigate(['managemenu']);
   }
+
+  reporting() {
+    this._router.navigate(['reporting']);
+  }
 }
 

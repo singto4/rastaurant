@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           } else {
 
             this._shareservice.dialog_service_login.close();
-            alert(res.body.status);
+            alert(res.header.errormessage);
           }
 
         }
