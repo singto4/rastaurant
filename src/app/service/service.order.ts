@@ -18,7 +18,7 @@ export class ServiceOrder {
             headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
         };
 
-       return this.http.post<Response>('http://localhost:8080/api/resteurant/order/addorder', data, httpOptions);
+       return this.http.post<Response>('/web/api/resteurant/order/addorder', data, httpOptions);
     }
 
     GetOrderByBill(bill: number): Observable<Response> {
@@ -27,7 +27,7 @@ export class ServiceOrder {
             headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
         };
 
-        return this.http.get<Response>('http://localhost:8080/api/resteurant/order/getbill/' + bill, httpOptions);
+        return this.http.get<Response>('/web/api/resteurant/order/getbill/' + bill, httpOptions);
     }
 
     GetBillStatus(): Observable<Response> {
@@ -36,7 +36,7 @@ export class ServiceOrder {
             headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
         };
 
-        return this.http.get<Response>('http://localhost:8080/api/resteurant/order/getbillstatus', httpOptions);
+        return this.http.get<Response>('/web/api/resteurant/order/getbillstatus', httpOptions);
     }
 
     UpdateBilllStatus(id: Number) {
@@ -45,6 +45,6 @@ export class ServiceOrder {
             headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
         };
 
-        return this.http.post<Response>('http://localhost:8080/api/resteurant/order/updatebillstatus', id, httpOptions);
+        return this.http.post<Response>('/web/api/resteurant/order/updatebillstatus', id, httpOptions);
     }
 }
