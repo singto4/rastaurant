@@ -8,3 +8,4 @@ FROM nginx:alpine
 COPY --from=node /app/dist/restaurant /usr/share/nginx/html
 
 EXPOSE 4200
+CMD [ "nginx", "-g", "daemon off;" ]
