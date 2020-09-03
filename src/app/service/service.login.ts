@@ -11,6 +11,6 @@ export class ServiceLogin {
     }
 
     login(data): Observable<Response> {
-        return this.http.post<Response>('/web/api/resteurant/user/login', data);
+        return this.http.post<Response>('http://35.187.243.105:8089/api/resteurant/user/login', data);
     }
 }

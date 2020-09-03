@@ -16,7 +16,7 @@ export class ServiceReporting {
             headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
         };
 
-        return this.http.post<Response>('/web/api/resteurant/report/billreport', date, httpOptions);
+        return this.http.post<Response>('http://35.187.243.105:8089/api/resteurant/report/billreport', date, httpOptions);
     }
 
     getMenuReport(date: Date) {
@@ -25,12 +25,12 @@ export class ServiceReporting {
             headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
         };
 
-        return this.http.post<Response>('/web/api/resteurant/report/menureport', date, httpOptions);
+        return this.http.post<Response>('http://35.187.243.105:8089/api/resteurant/report/menureport', date, httpOptions);
     }
 
     genExcelFile(date: Date): Observable<Blob> {
 
-        return this.http.post('/web/api/resteurant/report/genexcel', date,
+        return this.http.post('http://35.187.243.105:8089/api/resteurant/report/genexcel', date,
             {
                 headers: {'Authorization': localStorage.getItem('token')},
                 responseType: 'blob'
@@ -40,7 +40,7 @@ export class ServiceReporting {
 
     genPdfFile1(date: Date): Observable<Blob> {
 
-        return this.http.post('/web/api/resteurant/report/genpdf', date,
+        return this.http.post('http://35.187.243.105:8089/api/resteurant/report/genpdf', date,
             {
                 headers: {'Authorization': localStorage.getItem('token')},
                 responseType: 'blob',

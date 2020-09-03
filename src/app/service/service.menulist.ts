@@ -11,11 +11,11 @@ export class GetMenuList {
     }
 
     GetMenuList(): Observable<MenuList> {
-        return this.http.get<MenuList>('/web/api/resteurant/menu/getlistmenu');
+        return this.http.get<MenuList>('http://35.187.243.105:8089/api/resteurant/menu/getlistmenu');
     }
 
     GetMenuListByKeyword(keyword: String): Observable<MenuList> {
-        return this.http.get<MenuList>('/web/api/resteurant/menu/getlistmenu/keyword/' + keyword);
+        return this.http.get<MenuList>('http://35.187.243.105:8089/api/resteurant/menu/getlistmenu/keyword/' + keyword);
     }
 
     deleteMenuById(id: number) {
@@ -24,7 +24,7 @@ export class GetMenuList {
             headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
         };
 
-        return this.http.delete<Response>('/web/api/resteurant/menu/deletemenu/' + id, httpOptions);
+        return this.http.delete<Response>('http://35.187.243.105:8089/api/resteurant/menu/deletemenu/' + id, httpOptions);
     }
 
     updateMenuById(menu: Menu) {
@@ -33,7 +33,7 @@ export class GetMenuList {
             headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
         };
 
-        return this.http.put<Response>('/web/api/resteurant/menu/updatemenu', menu, httpOptions);
+        return this.http.put<Response>('http://35.187.243.105:8089/api/resteurant/menu/updatemenu', menu, httpOptions);
     }
 
     addMenu(menu: Menu) {
@@ -42,7 +42,7 @@ export class GetMenuList {
             headers: new HttpHeaders({'Authorization': localStorage.getItem('token')})
         };
 
-        return this.http.post<Response>('/web/api/resteurant/menu/createmenu', menu, httpOptions);
+        return this.http.post<Response>('http://35.187.243.105:8089/api/resteurant/menu/createmenu', menu, httpOptions);
     }
 }
 
